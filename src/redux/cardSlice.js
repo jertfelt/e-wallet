@@ -59,9 +59,9 @@ export const cardSlice = createSlice({
   },
   extraReducers: {
     [getUser.fulfilled]: (state, {payload}) => {
-      if (state.user ===null){
+      if (state.user === null){
         state.user = payload;
-        const {cards} = JSON.parse(JSON.parse(JSON.stringify(data)));
+        const {cards} = JSON.parse(JSON.stringify(data));
         state.allCards = cards;
         state.activeC = state.allCards.shift();
       }
