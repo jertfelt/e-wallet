@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+Tredje projektet, behövde installera om mjukvara och ominstallera webpacks.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2>Instruktioner: Projektarbete - E-wallet</h2>
 
-## Available Scripts
+Beskrivning: Du ska skapa en applikation där användaren kan hantera olika betalkort. Användaren ska kunna ha upp till max 4 kort, och måste alltid minst ha ett kort i sin e-wallet. Tekniker du ska använda i denna app är följande:
 
-In the project directory, you can run:
+● React
 
-### `npm start`
+● State
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+● Redux
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+● De-structuring
 
-### `npm test`
+● Array methods (t.ex map)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+● React Router
 
-### `npm run build`
+● Life Cycle Hooks (useEffect)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+● API calls (VG) Applikationen ska ha två routes (du får ändra namnet på dessa om du vill) :
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+/cards
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+● Högst upp ska du visa ett aktivt kort.
 
-### `npm run eject`
+● Om användaren har fler kort, ska dessa finnas listade under det aktiva kortet.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+● Det ska finnas en Add new card -knapp, som routar användaren vidare till /addcard.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+● Vid klick på ett inaktivt kort i listan så ska den läggas som active card högst upp i vyn. /addcard
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+● Ett nytt kort ska kunna läggas till med följande information: Vendor, card number, cardholder, expire month, expire year, CCV. (Se bild nedan).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+● För kortutgivare ska du hårdkoda in minst tre alternativ man kan välja mellan. Den användaren väljer ska stå på kortet uppe till höger (t.ex. Mastercard, Visa, American Express etc. Eller om ni vill hitta på något roligare!).
 
-## Learn More
+● Högst upp ska en förhandsvisning av kortet finnas, som uppdateras automatiskt när användare fyller i informationen. Funktionella krav
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+För att få Godkänt ska du:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+● Ha använt React och Redux för att lösa uppgiften.
 
-### Code Splitting
+● Lagt till grundläggande funktionalitet som att visa ut samtliga kort och lägga till betalkort.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+● Det är en single file application (SPA) som använder react-router.
 
-### Analyzing the Bundle Size
+● Det ska finnas ett aktivt betalkort vid start av applikationen. För att få Väl Godkänt ska du:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+● Gör ett API call vid start av applikationen, där du hämtar en slumpvald användare från följande API: https://randomuser.me/api/.
 
-### Making a Progressive Web App
+● Denna personens för och efternamn ska stå med stora bokstäver på samtliga kort som finns/skapas.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+● Det ska gå att ta bort kort från listan. Det ska dock INTE vara möjligt att ta bort ett kort som är aktivt.
 
-### Advanced Configuration
+● Fälten när en kort läggs till ska valideras så att fältet kortnummer måste innehålla 16 siffror. Fältet för namn ska inte gå att fylla i, och förhandsvisningen av kortet ska istället alltid visa användarens namn som hämtats från API:et.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+● Inga större buggar.
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Senast inlämnad 30/9 23.59 
