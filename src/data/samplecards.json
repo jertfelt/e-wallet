@@ -1,0 +1,56 @@
+{
+  "cards": [
+      {
+      "card_brand": "VISA",
+      "card_type": "CREDIT",
+      "bank_name": "Handelsbanken",
+      "bank_logo": "https://res.cloudinary.com/westfielddg/image/upload/westfield-media/se/store/mobile-logo/ulueheqd2rlaqyemqe6z.png",
+      "brand_img": "https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/363_Visa_Credit_Card_logo-512.png",
+      "card_number": "4007 4000 0000 2037",
+      "cardholder_name": "", 
+      "expMonth": "NOVEMBER",
+      "expYear": 2023,
+      "cvc": 123,
+      "active": true
+    },
+    {
+      "card_brand": "VISA",
+      "card_type": "DEBIT",
+      "bank_name": "Swedbank",
+      "bank_logo": "https://swedbank.com/content/dam/swedbank/brand-manager/sketches/Symbol_626px.png",
+      "brand_img": "https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/363_Visa_Credit_Card_logo-512.png",
+      "card_number": "4200 0000 0000 0000",
+      "cardholder_name": "", 
+      "expMonth": "MAY",
+      "cvc": 345,
+      "expYear": 2025,
+      "active": false
+    },
+    {
+      "card_brand": "Mastercard",
+      "card_type": "CREDIT",
+      "bank_name": "Icabanken",
+      "bank_logo": "https://www.icabanken.se/static/media/icabanken.6501e0eb.svg",
+      "brand_img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png",
+      "card_number": "5555 5555 5555 4444",
+      "cardholder_name": "", 
+      "cvc": 398,
+      "expMonth": "JUNE",
+      "expYear": 2025,
+      "active": false
+    },
+    {
+      "card_brand": "Mastercard",
+      "bank_name": "Danske bank",
+      "bank_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Danske_Bank_logo.svg/2560px-Danske_Bank_logo.svg.png",
+      "brand_img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png",
+      "card_type": "DEBIT",
+      "card_number": "5173 3750 0000 0006",
+      "cardholder_name": "", 
+      "cvc": 109, 
+      "expMonth": "MARCH",
+      "expYear": 2024, 
+      "active": false
+    }  
+  ]
+}

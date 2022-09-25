@@ -1,0 +1,60 @@
+.background{
+  background-color:midnightblue;
+  display:block;
+  margin: 0 auto;
+  margin-top:-1rem;
+  padding:1rem;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right:3rem;
+  align-items: center;
+}
+
+
+.font{
+  color:azure;
+  font-family: euro_technic_extended_outliBd;
+  font-size:31px;
+  line-height: 0;
+}
+.font a {
+  padding-left:3rem;
+  color: azure;
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 600px) {
+  .background{
+   display:flex;
+   flex-direction: column;
+   padding:1rem;
+   text-align: center;
+   
+  }
+
+  .font{
+    font-size:20px;
+    line-height:1;
+    padding-right:9rem;
+  }
+  
+ }
+
+ @media only screen and (max-width: 400px) {
+ 
+
+  .font{
+    font-size:18px;
+    line-height:1;
+    margin: 0 auto;
+    padding-top:1rem;
+   
+  }
+  .font a {
+
+    padding-left:0;
+    padding-left:4px;
+    
+  }
+ }
