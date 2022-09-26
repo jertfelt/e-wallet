@@ -25,7 +25,7 @@ const Homepage = ({title}) => {
       key= {card.card_number}>
         <Cards {...card}
          cardholder_name= {username}
-         menuButtonOptions={{deleteOption:true, activeOption:true}}
+         menuButtOptions={{activeButt:true,deleteButt:true}}
          />
       </div>
     ))}

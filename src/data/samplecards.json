@@ -10,8 +10,8 @@
       "cardholder_name": "", 
       "expMonth": "NOVEMBER",
       "expYear": 2023,
-      "cvc": 123,
-      "active": true
+      "cvc": 123
+      
     },
     {
       "card_brand": "VISA",
@@ -23,8 +23,8 @@
       "cardholder_name": "", 
       "expMonth": "MAY",
       "cvc": 345,
-      "expYear": 2025,
-      "active": false
+      "expYear": 2025
+     
     },
     {
       "card_brand": "Mastercard",
@@ -36,8 +36,8 @@
       "cardholder_name": "", 
       "cvc": 398,
       "expMonth": "JUNE",
-      "expYear": 2025,
-      "active": false
+      "expYear": 2025
+      
     },
     {
       "card_brand": "Mastercard",
@@ -49,8 +49,8 @@
       "cardholder_name": "", 
       "cvc": 109, 
       "expMonth": "MARCH",
-      "expYear": 2024, 
-      "active": false
+      "expYear": 2024
+      
     }  
   ]
 }
