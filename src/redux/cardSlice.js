@@ -48,13 +48,14 @@ export const cardSlice = createSlice({
       state.allCards = [...state.allCards, payload];
     },
     deleteC: (state, {payload}) => {
-      state.allCards = state.allCards.filter(card => card.cardNumber !== payload);
+      state.allCards = state.allCards.filter(card => card.card_number !== payload);
+      
     },
     changeC: (state, {payload}) => {
       const thisCard = state.activeC;
-      state.activeC = state.allCards.find(card => card.cardNumber === payload)
+      state.activeC = state.allCards.find(card => card.card_number  === payload)
       state.allCards.push(thisCard);
-      state.allCards = state.allCards.filter(card => card.cardNumber !== payload);
+      state.allCards = state.allCards.filter(card => card.card_number  !== payload);
     }
   },
   extraReducers: {

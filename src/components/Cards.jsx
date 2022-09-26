@@ -5,16 +5,15 @@ import { useState } from "react";
 
 const Card = ({
   card_brand, card_type, bank_name, bank_logo, brand_img, card_number,  expMonth, expYear, cardholder_name, active,
-  menuButtonOptions = {}
+  menuButtOptions = {}
 }) => {
-  console.log(active)
-  const [isActive, setIsActive] = useState(active);
+ 
 
   return ( 
     <div className={styles.cardcontent}
-    >{!isActive && <CardOptions
-      menuButtonOptions={menuButtonOptions} card_number= {card_number}
-      active = {active}/>}
+    ><CardOptions
+      menuButtOptions={menuButtOptions} card_number= {card_number}
+      active = {active}/>
     <article className={styles.card}>
     <p>{card_type}</p>
     <h4>{card_number}</h4>

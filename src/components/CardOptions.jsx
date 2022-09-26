@@ -3,14 +3,17 @@ import { useDispatch } from "react-redux";
 import { changeC, deleteC } from "../redux/cardSlice";
 import styles from "./styles/Cards.module.css"
 
-const CardOptions = ({menuButtonOptions = {}, card_number}) => {
-  
+const CardOptions = ({menuButtOptions = {}, card_number, active}) => {
+  const [isActive, setIsActive] = useState(active);
+ 
   
   const dispatch = useDispatch();
   const setActive = () => {
     dispatch(changeC(card_number));
-    
+    setIsActive(true);
   }
+  const [options] = useState(menuButtOptions) 
+  
   const deleteCard = () => {
     dispatch(deleteC(card_number));
     console.log("tagit bort");
@@ -18,8 +21,9 @@ const CardOptions = ({menuButtonOptions = {}, card_number}) => {
 
   return (
     <div className={styles.cardMenu}>
-     <button onClick={setActive}>Gör aktiv</button>
+     {!isActive && <><button onClick={setActive}>Aktivera</button>
      <button onClick={deleteCard}> Ta bort</button>
+     </>}
     </div>
     );
 }

@@ -18,6 +18,18 @@ const Homepage = ({title}) => {
     </span>
     <h2>{title}:</h2>
     <article className={styles.homepagecontainer}>
+    <div className={styles.inactive}>
+    <h3>Inaktiva kort:</h3>
+    {allCards.map(card => (
+      <div className={styles.inactiveCards}
+      key= {card.card_number}>
+        <Cards {...card}
+         cardholder_name= {username}
+         menuButtonOptions={{deleteOption:true, activeOption:true}}
+         />
+      </div>
+    ))}
+    </div> 
     <div className={styles.active}>
     {activeC && 
     <div key={activeC.card_number}> 
@@ -25,20 +37,6 @@ const Homepage = ({title}) => {
     <Cards {...activeC} 
     cardholder_name= {username}/></div>}
     </div>
-    <div className={styles.inactive}>
-    <h3>Inaktiva kort:</h3>
-    {allCards.map(card => (
-      <div className={styles.inactiveCards}
-      key= {card.card_number}>
-         
-        <Cards {...card}
-         cardholder_name= {username}
-         menuButtonOptions={{deleteOption:true, activeOption:true}}
-         />
-
-      </div>
-    ))}
-    </div> 
     </article>
     </div>
   )
