@@ -19,7 +19,7 @@ const Card = ({
     dispatch(changeCard(card_number));
     //lägg in en loader med timeout
   }
-  const deleteCard = () => {
+  const deleteThis = () => {
     dispatch(deleteCard(card_number));
      //lägg in en loader med timeout
     console.log("tagit bort")
@@ -31,7 +31,7 @@ const Card = ({
     <div className={styles.cardMenu}>
       {buttons.buttons && <>
       <button onClick={setActive}>AKTIVERA</button>
-      <button onClick={deleteCard}> Ta bort</button>
+      <button onClick={deleteThis}> Ta bort</button>
       </>
       }
     </div>
