@@ -40,13 +40,7 @@ export const cardSlice = createSlice({
         state.activeC = state.allCards.shift();
       }
     },
-    addCard: (state, {payload}) => {
-      if ([...state.allCards, state.activeC].length >= 4){
-        alert("Du får max ha fyra kort")
-        return;
-      }
-      state.allCards = [...state.allCards, payload];
-    },
+    
     deleteCard: (state, {payload}) => {
       state.allCards = state.allCards.filter(card => card.card_number !== payload);
       
@@ -56,6 +50,13 @@ export const cardSlice = createSlice({
       state.activeC = state.allCards.find(card => card.card_number  === payload)
       state.allCards.push(thisCard);
       state.allCards = state.allCards.filter(card => card.card_number  !== payload);
+    },
+    addCard: (state, {payload}) => {
+      if ([...state.allCards, state.activeC].length >= 4){
+        alert("Du får max ha fyra kort")
+        return;
+      }
+      state.allCards = [...state.allCards, payload];
     }
   },
   extraReducers: {
