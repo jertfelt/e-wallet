@@ -1,8 +1,8 @@
-import React from 'react'
+import styles from "./styles/AddCards.module.css"
 
 const AddCards =() =>{
   return (
-    <div>AddCards</div>
+    <div className={styles.container}>AddCards</div>
   )
 }
 

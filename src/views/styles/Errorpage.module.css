@@ -182,7 +182,7 @@
       margin-top: 25px;
       transition: background .5s ease;
       overflow: hidden;
-      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      
     }
    
       .box__button:hover {

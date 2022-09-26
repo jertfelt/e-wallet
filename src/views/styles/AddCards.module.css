@@ -1,0 +1,9 @@
+.container{
+  background-color: azure;
+  padding:2rem;
+  margin: 0 auto;
+  width: 70%;
+  margin-top:3em;
+  border-radius: 19px;
+  color:midnightblue;
+}
