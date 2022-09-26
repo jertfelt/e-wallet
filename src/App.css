@@ -24,12 +24,12 @@ body {
 footer{
   background-color: midnightblue;
   padding:2rem;
-  position: fixed;
-  bottom:0;
+  
   width:100%;
   display:flex;
   justify-content: space-around;
   z-index:21;
+  margin-top:3em;
 }
 footer p {
   font-size: 12px;
@@ -56,3 +56,39 @@ footer p {
     width:60%;
   }
  }
+
+ .maincontent{
+  max-width: 1000px;
+  min-height: 160vh;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+ 
+}
+
+h1{
+  flex:1;
+  color:azure;
+  font-size:12vw;
+  text-align: center;
+  letter-spacing: -6px;
+  flex-wrap: wrap;
+
+  
+}
+
+.aboveMain{
+  z-index:20;
+  background-color: midnightblue;
+  color:azure;
+  padding:3rem;
+  width:70%;
+  margin: 0 auto;
+  border-radius: 19px;
+  padding-bottom:3em;
+  margin-bottom:3em;
+  height:1000px;
+}

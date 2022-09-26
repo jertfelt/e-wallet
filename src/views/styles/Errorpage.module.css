@@ -1,0 +1,214 @@
+
+
+.content{
+  min-height:120vh;
+}
+
+.box {
+  width: 350px;
+  height: 100%;
+  max-height: 300px;
+  min-height: 450px;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px 50px;
+  text-align: center;
+  }
+
+  .box__ghost {
+    padding: 15px 25px 25px;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -30%);
+  }
+  
+  .symbol :nth-child(1) {
+    opacity: .2;
+    animation: shine 4s ease-in-out 3s infinite;
+  }
+
+  .symbol:nth-child(3):before {
+        transform: rotate(90deg);
+      }
+      .symbol:nth-child(3):after {
+        transform: rotate(180deg);
+      }
+ 
+      .symbol:nth-child(4) {
+      opacity: .2;
+      animation: shine 6s ease-in-out 1.6s infinite; }
+      
+     
+      .symbol:nth-child(4):before {
+        transform: rotate(45deg);
+      }
+      .symbol:nth-child(4):after {
+        transform: rotate(-45deg);
+      }
+    
+      .symbol:nth-child(5) {
+      position: absolute;
+      right: 5px;
+      top: 40px;
+      height: 12px;
+      width: 12px;
+      border: 3px solid;
+      border-radius: 50%;
+      border-color: azure;
+      opacity: .2;
+      animation: shine 1.7s ease-in-out 7s infinite;
+    }
+    .symbol:nth-child(6) {
+      opacity: .2;
+      animation: shine 2s ease-in-out 6s infinite;
+    }
+      
+  
+
+
+    .box__ghostcontainer {
+      background: azure;
+      width: 100px;
+      height: 100px;
+      border-radius: 100px 100px 0 0;
+      position: relative;
+      margin: 0 auto;
+      animation: upndown 3s ease-in-out infinite;
+    }
+      .box__ghosteyes {
+        position: absolute;
+        left: 50%;
+        top: 45%;
+        transform: translate(-50%, -45%); 
+        height: 12px;
+        width: 70px;
+      }
+        .box__eyeleft {
+          width: 12px;
+          height: 12px;
+          background: midnightblue;
+          border-radius: 50%;
+          margin: 0 10px;
+          position: absolute;
+          left: 0;
+        }
+        .box__eyeright {
+          width: 12px;
+          height: 12px;
+          background: midnightblue;
+          border-radius: 50%;   
+          margin: 0 10px;
+          position: absolute;
+          right: 0;
+        }
+      
+
+      .box__ghostbottom {
+        display:flex;
+        position: absolute;
+        top:100%;
+        left:0;
+        right:0;
+      }
+      .box__ghostbottom  div {
+          flex-grow:1;
+          position: relative;
+          top:-10px;
+          height:20px;
+          border-radius:100%;
+          background-color: azure;
+      }
+          .box__ghostbottom  :nth-child(2n) {
+            top: -12px;
+            margin: 0 -0px;
+            border-top: 15px solid midnightblue;
+            background: transparent;
+          }
+
+      
+    .box__ghostshadow {
+      height: 20px;
+      box-shadow: 0 50px 15px 5px midnightblue;
+      border-radius: 50%;
+      margin: 0 auto;
+      animation: smallnbig 3s ease-in-out infinite;
+    }
+  
+  
+  .box__description {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+    .box__descriptioncontainer {
+      color: azure;
+      text-align: center;
+      width: 200px;
+      font-size: 16px;
+      margin: 0 auto;
+    }
+      .box__descriptiontitle {
+        font-family: euro_technic_extended_outliBd; 
+        font-size: 34px;
+        letter-spacing: .5px;
+      }
+
+      .box__descriptiontext {
+        color: azure;
+        line-height: 20px;
+        margin-top: 20px;
+      }
+    
+    
+    .box__button {
+      display: block;
+      position: relative;
+      background: midnightblue;
+      border: 1px solid transparent;
+      border-radius: 50px;
+      height: 50px;
+      text-align: center;
+      text-decoration: none;
+      color:azure;
+      line-height: 50px;
+      font-size: 18px;
+      padding: 0 70px;
+      white-space: nowrap;
+      margin-top: 25px;
+      transition: background .5s ease;
+      overflow: hidden;
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+    }
+   
+      .box__button:hover {
+        background: transparent;
+        border-color: midnightblue;
+        text-transform: uppercase;
+      }
+   a{
+    text-decoration: none
+  }
+
+/*keyframes*/
+@keyframes upndown {
+  0% {transform: translateY(5px);}
+  50% {transform: translateY(15px);}
+  100% {transform: translateY(5px);}
+}
+@keyframes smallnbig {
+  0% {width: 90px;}
+  50% {width: 100px;}
+  100% {width: 90px;}
+}
+@keyframes shine {
+  0% {opacity: .2;}
+  25% {opacity: .1;}
+  50% {opacity: .2;}
+  100% {opacity: .2;}
+}
+
