@@ -1,27 +1,40 @@
 
 import styles from "./styles/Cards.module.css";
-import CardOptions from "./CardOptions";
+
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { changeCard } from "../redux/cardSlice";
+import { changeCard, deleteCard } from "../redux/cardSlice";
 
 const Card = ({
   card_brand, card_type, bank_name, bank_logo, brand_img, card_number,  expMonth, expYear, cardholder_name, 
-  menuButtOptions = {}
+  cardButtons = {}
 }) => {
+
+  const [buttons] = useState(cardButtons);
+  console.log(buttons);
   
   const dispatch = useDispatch();
 
   const setActive = () => {
     dispatch(changeCard(card_number));
+    //lägg in en loader med timeout
+  }
+  const deleteCard = () => {
+    dispatch(deleteCard(card_number));
+     //lägg in en loader med timeout
+    console.log("tagit bort")
   }
 
   return ( 
     <div className={styles.cardcontent}
     > 
-    <CardOptions
-      menuButtOptions={menuButtOptions} card_number= {card_number}
-      />
+    <div className={styles.cardMenu}>
+      {buttons.buttons && <>
+      <button onClick={setActive}>AKTIVERA</button>
+      <button onClick={deleteCard}> Ta bort</button>
+      </>
+      }
+    </div>
   
     <article className={styles.card}>
     <p>{card_type}</p>
