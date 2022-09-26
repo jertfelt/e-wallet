@@ -14,7 +14,9 @@ const Homepage = ({title}) => {
     <div className={styles.homepagecont}>
     <span>
       <h2> Välkommen, {user.name.first} {user.name.last}</h2>
-      <Link to="/skapakort"><button>Lägg till kort</button></Link>
+      <Link to="/skapakort"
+      state= {user}
+      ><button>Lägg till kort</button></Link>
     </span>
     <h2>{title}:</h2>
     <article className={styles.homepagecontainer}>

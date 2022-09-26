@@ -11,7 +11,7 @@ const Card = ({
 }) => {
 
   const [buttons] = useState(cardButtons);
-  console.log(buttons);
+ 
   
   const dispatch = useDispatch();
 
