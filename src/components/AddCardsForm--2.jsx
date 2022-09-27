@@ -26,15 +26,21 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear}) => {
 
   const changeCardNumber = (e) => {
     const changedName = e.target.name;
-    let changedValue = e.target.value.split(" ").join("");
-    let checkedValue = checkForNumbers(changedValue, e.target);
 
+    if (e.target.value === "a"){
+      console.log("DET ÄR FEL")
+      return false;
+    }
+
+
+    let changedValue = e.target.value.split(" ").join("");
+
+  
+   
     let splitted = [];
-    for (let i=0; i <checkedValue.length; i+=4){ splitted.push(checkedValue.substring(i, i+4))}
+    for (let i=0; i <changedValue.length; i+=4){ splitted.push(changedValue.substring(i, i+4))}
    
     let changedValueWithSplit = splitted.join(" ")
-    console.log(changedValueWithSplit)
-   
 
     setCard(changedName, changedValueWithSplit);
     }
