@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import './App.css';
 import {getUser} from "./redux/cardSlice";
 import Homepage from "./views/Homepage";
-
+import { saveState } from "./redux/cardSlice";
 import Errorpage from "./views/Errorpage";
 
 function App() {
@@ -13,11 +13,8 @@ function App() {
   const fetched = useRef(true);
 
 
-
   useEffect(() => {
     if(fetched.current && user === null){
-      console.log("test", user)
-
       dispatch(getUser());
       fetched.current = false;
     }

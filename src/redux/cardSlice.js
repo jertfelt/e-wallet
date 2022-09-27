@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import { first } from "lodash";
 
 import data from "../data/samplecards.json";
 const urlNames = "https://randomuser.me/api/"; 
@@ -10,20 +10,23 @@ export const getUser = createAsyncThunk("cards/getUser", async () => {
   if (res.status === 200){
     return res.data.results[0];
   }
-  else {
-    return {
-      "default": [
-        {
-          "name":{
-            "first": "Erik",
-            "last" : "Eriksson"
-          }
-        }
-      ]
-    }
-  }
-
 })
+
+//försöker spara
+export const saveState = (user) => {
+  try {
+    const userLocal = user.name;
+    
+    console.log("this is now local storage:", userLocal)
+    const firstName = userLocal.first;
+    const lastName = userLocal.last;
+    const userNameLocal = firstName + " " + lastName;
+    localStorage.setItem("userLocal", userNameLocal);
+  }
+  catch (err){
+    console.log(err)
+  }
+}
 
 //?The shift() method removes the first element from an array and returns that removed element. This method changes the length of the array. 
 
@@ -63,6 +66,8 @@ export const cardSlice = createSlice({
     [getUser.fulfilled]: (state, {payload}) => {
       if (state.user === null){
         state.user = payload;
+        // console.log("payloyad:", payload)
+        saveState(payload)
         const {cards} = JSON.parse(JSON.stringify(data));
         state.allCards = cards;
         state.activeC = state.allCards.shift();

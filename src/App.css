@@ -7,6 +7,10 @@ body {
 }
 
 
+/* select #bankName option[value="Icabanken"]{
+  background-image:url(https://www.icabanken.se/static/media/icabanken.6501e0eb.svg); 
+}  */
+
 @font-face {
   font-family: 'euro_technic_extended_outliBd';
   src: url('../src/assets/fonts/Euro Technic Extended Outline Bold.ttf') format('woff2'),

@@ -8,12 +8,13 @@ const Homepage = ({title}) => {
   const { allCards, activeC, user } = useSelector((state) => state.cards
   );
   const username = user.name.first + " " + user.name.last;
+  
 
   
   return (
     <div className={styles.homepagecont}>
     <span>
-      <h2> Välkommen, {user.name.first} {user.name.last}</h2>
+      <h2> Välkommen, {user.name.title} {user.name.first} {user.name.last}</h2>
       <Link to="/skapakort"
       state= {user}
       ><button>Lägg till kort</button></Link>
