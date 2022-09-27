@@ -27,12 +27,15 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear}) => {
   const changeCardNumber = (e) => {
     const changedName = e.target.name;
     let changedValue = e.target.value.split(" ").join("");
+    let checkedValue = checkForNumbers(changedValue, e.target);
 
     let splitted = [];
-    for (let i=0; i <changedValue.length; i+=4){ splitted.push(changedValue.substring(i, i+4))}
+    for (let i=0; i <checkedValue.length; i+=4){ splitted.push(checkedValue.substring(i, i+4))}
    
     let changedValueWithSplit = splitted.join(" ")
     console.log(changedValueWithSplit)
+   
+
     setCard(changedName, changedValueWithSplit);
     }
 
@@ -59,7 +62,8 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear}) => {
   const changeYear = (e) => {
     const changedName = e.target.name;
     const changedValue = e.target.value;
-    setCard(changedName, changedValue);
+    let checkedValue = checkForNumbers(changedValue, e.target);
+    setCard(changedName, checkedValue);
   }
 
   const setCard = (name, value) => {
@@ -68,7 +72,14 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear}) => {
     })
   }
 
-
+  const checkForNumbers = (value, input) => {
+    let check = /[a-öA-Ö]/g;
+    if (check.test(value)){
+      
+      value= value.slice(0, value.length-1);
+      input.value = value;
+    }
+  }
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -109,8 +120,6 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear}) => {
           <option value="Swedbank">Danske bank</option>    
         </select>
 
-
-
         <label htmlFor="card_brand">
           Kortföretag:
         </label>
@@ -140,7 +149,7 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear}) => {
         type="text"
         name="card_number"
         id="card_number"
-        maxLength="19"
+        maxLength="16"
         onInput={changeCardNumber}
         placeholder="XXXX XXXX XXXX XXXX"
         data-max="16"
