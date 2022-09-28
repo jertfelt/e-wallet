@@ -5,13 +5,32 @@ import { addCard } from "../redux/cardSlice";
 import Cards from "../components/Cards";
 import {Link} from "react-router-dom"
 import styles from "../views/styles/AddCards.module.css";
+import { set } from "lodash";
 
-const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type}) => {
+const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard, inactiveCards}) => {
 
   const dispatch = useDispatch();
-  const {allCards} = useSelector(state => state.cards);
+  const {allCards, activeC } = useSelector(state => state.cards);
+  
+  // const {allCards} = inactiveCards;
+ 
+  // const {activeC} = activeCard;
+  // console.log(allCards, activeC);
+  // useEffect(() => {
+  
+  //   const {allCards, activeC } = useSelector(state => state.cards);
+  
+  //   return () => {
+      
+  //   }
+  // }, [])
+  
+  //!VIKTIGT: useSelector och allCards fungerar bara när jag har klickat mig hit från Homepage, inte när jag refreshar sidan. 
+
+
   const [newcardprops, setNewCardProps] = useState({});
   const [errormessage, setErrorMessage] = useState("");
+  const [seeAll, setSeeAll] =useState(false);
 
   const changeBank = (e) => {
 
@@ -64,15 +83,23 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type}) => {
     let newValue = e.target.value;
     let checkedValue = checkForNumbers(newValue, e.target);
     setErrorMessage("Behöver vara siffror i kortnumret, inte bokstäver!")
-      
-    let changedValue = e.target.value.split(" ").join("");
 
-    let splitted = [];
-    for (let i=0; i <changedValue.length; i+=4){ splitted.push(changedValue.substring(i, i+4))}
-   
-    let changedValueWithSplit = splitted.join(" ")
+    if( allCards.filter(item => item.card_number === checkedValue) || activeC.filter(item => item.card_number === checkedValue)){
+      setErrorMessage("Det här kortnumret är redan taget!")
+    }
 
-    setCard(changedName, changedValueWithSplit);
+    else {
+
+      let changedValue = e.target.value.split(" ").join("");
+
+      let splitted = [];
+      for (let i=0; i <changedValue.length; i+=4){ splitted.push(changedValue.substring(i, i+4))}
+     
+      let changedValueWithSplit = splitted.join(" ")
+  
+      setCard(changedName, changedValueWithSplit);
+    }
+
     }
 
     const changeMonth= (e) => {
@@ -111,7 +138,9 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type}) => {
   }
 
   const changeCardType = (e) => {
-    
+    if (e.target.value === ""){
+      setErrorMessage("Du måste välja vilket typ av kort du ska ha!")
+    }
     const changedName = e.target.name;
     const changedValue = e.target.value;
     setCard(changedName, changedValue);
@@ -121,6 +150,9 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type}) => {
     const changedName = e.target.name;
     const changedValue = e.target.value;
     let checkedValue = checkForNumbers(changedValue, e.target);
+  
+
+
     setCard(changedName, checkedValue);
   }
 
@@ -140,20 +172,23 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type}) => {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    
+ 
     if (allCards.length >= 3){
       console.log("Får ej lägga till fler än fyra kort!")
     }
 
     dispatch(addCard(newcardprops));
     setErrorMessage("Lagt till kort");
+    setSeeAll(true)
     
   }
 
 
+  
+
   return (
     <section>
-    <h2>Lägg till:</h2>
+    <h2 className="fancyfont">Lägg till ett nytt kort:</h2>
     <Cards  
     cardholder_name = {cardholder_name}
     expMonth ={expMonth} 
@@ -192,11 +227,13 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type}) => {
         </select>
 
         <label htmlFor="card_type">
+          Korttyp:
         </label>
         <select
         required
         name="card_type"
         onChange={changeCardType}>
+          <option value="">VÄLJ:</option>
           <option value="DEBIT">DEBIT</option>
           <option value="CREDIT">CREDIT</option>
         </select>
@@ -247,6 +284,8 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type}) => {
         type="text"
         name="expYear"
         id="expYear"
+        maxLength="4"
+        minLength="4"
         onInput={changeYear}
         placeholder={expYear}>
         </input>
@@ -258,6 +297,30 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type}) => {
         <button>SPARA</button>
       </form>
     </div>
+    {seeAll  &&
+    <div className={styles.watchAllCards}>
+      <h3 className="fancyfont">Alla kort:</h3>
+      <h3>Inaktiva:</h3>
+      <div className={styles.inactive}>
+      {allCards.map(card => (
+      <div className={styles.inactiveCards}
+      key= {card.card_number}>
+        <Cards {...card}
+         cardholder_name= {cardholder_name}
+         cardButtons={{buttons:true}}
+         />
+      </div>
+    ))}
+      </div>
+      <div className={styles.active}>
+    {activeC && 
+    <div key={activeC.card_number}> 
+    <h3>Aktivt:</h3>
+    <Cards {...activeC} 
+    cardholder_name= {cardholder_name}/></div>}
+    </div>
+    </div>
+     }
     </section>
     
 

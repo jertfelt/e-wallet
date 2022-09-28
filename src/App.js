@@ -5,13 +5,13 @@ import {getUser} from "./redux/cardSlice";
 import Homepage from "./views/Homepage";
 import { saveState } from "./redux/cardSlice";
 import Errorpage from "./views/Errorpage";
+import AddCards from "./views/AddCards";
 
 function App() {
  
   const dispatch = useDispatch()
   const { allCards, activeC, user } = useSelector((state)=> state.cards);
   const fetched = useRef(true);
-
 
   useEffect(() => {
     if(fetched.current && user === null){
@@ -42,6 +42,7 @@ function App() {
       user = {user}
       title = "Dina kort"
       />
+
       </div>}
      
       </div>
