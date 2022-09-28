@@ -1,11 +1,10 @@
 import styles from "./styles/AddCards.module.css"
-import {  useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-// import AddCardsForm from "../components/AddCardsForm";
-import AddCardsForm from "../components/AddCardsForm--2"
-import Errorpage from "./Errorpage";
+import AddCardsForm from "../components/AddCardsForm";
+
 
 const AddCards =() =>{
  const [userNames, setUserNames] = useState(null)
@@ -43,17 +42,14 @@ const AddCards =() =>{
     }
     
   }, [])
- 
 
-//jag vill göra så att bara månaden kan ändra.
-  
- const nameOfMonth = new Date().toLocaleString(
+  const nameOfMonth = new Date().toLocaleString(
   'default', {month: 'long'}
 );
 let currentTime = new Date();
 let currentYear = currentTime.getFullYear()
 let expireYear = currentYear + 5;
-
+let card_type = "DEBIT";
 
   
   return (
@@ -62,6 +58,7 @@ let expireYear = currentYear + 5;
        cardholder_name = {userNames}
        expMonth ={nameOfMonth} 
        expYear = {expireYear}
+       card_type = {card_type}
        />
        <button onClick={() => backButt()}>Gå tillbaka</button>
     </div>
