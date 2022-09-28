@@ -18,6 +18,8 @@ const [activeCard, setActive] = useState(activeC);
   //Skulle behöva anropa store här om användaren går direkt in på adressen. Har iallafall försökt lösa problemet med att useSelector inte fungerar när man refreshar hemsidan genom att lagra information från App->Homepage till AddCards genom localStorage. Problemet kvarstår dock om man går in på /skapakort för allra första gången typ. Vet ej heller om detta fungerar 100% felfritt.
   //har kollat på useParams men ser det inte fungera i det här fallet
 
+
+
   const loadState = () => {
       let username = JSON.stringify(localStorage.getItem('userLocal'));
      
@@ -83,7 +85,8 @@ const backButt = () => {
         activeCard = {activeCard}
         inactiveCards = {inactiveCards}
       />
-      <button onClick={() => backButt()}>Gå tillbaka</button>
+      <button className={styles.backButt}
+       onClick={() => backButt()}>Gå tillbaka</button>
     </div>
   )
 }

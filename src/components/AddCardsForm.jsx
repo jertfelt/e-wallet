@@ -84,11 +84,12 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
     let checkedValue = checkForNumbers(newValue, e.target);
     setErrorMessage("Behöver vara siffror i kortnumret, inte bokstäver!")
 
-    if( allCards.filter(item => item.card_number === checkedValue) || activeC.filter(item => item.card_number === checkedValue)){
-      setErrorMessage("Det här kortnumret är redan taget!")
-    }
+    //bugg - se över imorgon
+    // if( allCards.filter(item => item.card_number === checkedValue) || activeC.filter(item => item.card_number === checkedValue)){
+    //   setErrorMessage("Det här kortnumret är redan taget!")
+    // }
 
-    else {
+    // else {
 
       let changedValue = e.target.value.split(" ").join("");
 
@@ -98,7 +99,7 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
       let changedValueWithSplit = splitted.join(" ")
   
       setCard(changedName, changedValueWithSplit);
-    }
+    // }
 
     }
 
@@ -213,18 +214,58 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
           <option value="Danske bank">Danske bank</option>    
         </select>
 
-        <label htmlFor="card_brand">
-          Kortföretag:
-        </label>
-        <select
+        <div className={styles.selectCard}>
+        <label>Välj KORTFÖRETAG:</label>
+        <div className={styles.chooseCardBrand}>
+          <span>
+            <input id="VISA"
+            type="radio"
+            name="card_brand"
+            value="VISA"
+            onChange={changeCardHandler}/>
+            <label
+            alt="VISA"
+            className={`${styles.brand__VISA} ${styles.brand__label}`}
+            htmlFor="VISA"
+            ></label>
+          </span>
+          <span>
+          <input id="MasterCard"
+            type="radio"
+            name="card_brand"
+            value="MasterCard"
+            onChange={changeCardHandler}/>
+            <label
+            alt="MasterCard"
+            className={`${styles.brand__MasterCard} ${styles.brand__label}`}
+            htmlFor="MasterCard"
+            ></label>
+          </span>
+          <span>
+          <input id="Citibank"
+            type="radio"
+            name="card_brand"
+            value="Citibank"
+            onChange={changeCardHandler}/>
+            <label
+            alt="Citibank"
+            className={`${styles.brand__Citibank} ${styles.brand__label}`}
+            htmlFor="Citibank"
+            ></label>
+          </span>
+        </div>
+        </div>
+        {/* <select
+        className={styles.choseCardBrand}
         required
         name="card_brand"
         onChange={changeCardHandler}>
+
           //*lägg in css och html för bildval:
           <option value="VISA">VISA</option>
           <option value="MasterCard">MasterCard</option>
           <option value="Citibank">Citibank</option>
-        </select>
+        </select> */}
 
         <label htmlFor="card_type">
           Korttyp:
@@ -255,7 +296,7 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
         <p>*Måste vara 16 siffror, inga bokstäver.</p>
 
         <label htmlFor="expYear">Ändra år & månad:</label>
-        <span className="yearandmonth">
+        <span className={styles.yearandmonth}>
           <select
           required
           type="text"
@@ -276,8 +317,7 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
             <option value="NOVEMBER">NOVEMBER</option>
             <option value="DECEMBER">DECEMBER</option>
           </select>
-        
-        {" / "}
+   
         <input 
         required
         className="inputYear"
@@ -299,7 +339,10 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
     </div>
     {seeAll  &&
     <div className={styles.watchAllCards}>
-      <h3 className="fancyfont">Alla kort:</h3>
+      
+      <h2 className="fancyfont">Alla kort:</h2>
+      <div className={styles.watchAllCards__container}>
+      <div>
       <h3>Inaktiva:</h3>
       <div className={styles.inactive}>
       {allCards.map(card => (
@@ -312,12 +355,14 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
       </div>
     ))}
       </div>
-      <div className={styles.active}>
+      </div>
+    <div className={styles.active}>
     {activeC && 
     <div key={activeC.card_number}> 
     <h3>Aktivt:</h3>
     <Cards {...activeC} 
     cardholder_name= {cardholder_name}/></div>}
+    </div>
     </div>
     </div>
      }

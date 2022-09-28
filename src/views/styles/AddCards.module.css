@@ -8,3 +8,216 @@
   color:midnightblue;
 }
 
+.inactiveCards article{
+  opacity:80%;
+  filter: saturate(0%);
+}
+.inactive button{
+  color:azure;
+  
+  
+}
+
+form{
+  display:flex;
+  flex-direction: column;
+  width:80%;
+  max-width:400px;
+}
+
+
+form label{
+  margin-top:8px;
+  margin-bottom:4px;
+  text-transform: uppercase;
+  letter-spacing: 0.03rem;
+  font-weight: bold;
+}
+form select{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-transform: uppercase;
+  color:midnightblue;
+  background-color: transparent;
+  border-color:  midnightblue;
+  padding:4px;
+  border-radius: 9px;
+}
+form select:hover{
+  background-color: azure;
+}
+form option {
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+form input{
+  background-color: transparent;
+  padding:4px;
+  color:midnightblue;
+  border-color: midnightblue;
+}
+form p {
+  margin-top:0;
+}
+.yearandmonth{
+ display:flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: space-between;
+ width:50%;
+}
+
+.yearandmonth input{
+max-width:50px;
+}
+
+
+.errormessage{
+margin-top:2rem;
+font-size:20px;
+color:palevioletred;
+}
+form button {
+  background-color: transparent;
+  border-radius: 19px;
+  border-color: midnightblue;
+
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-transform: uppercase;
+  padding: 1rem;
+  color: midnightblue;
+  font-weight:bold;
+  max-width:30%;
+  margin-bottom:-1rem;
+}
+form button:hover{
+  background-color: midnightblue;
+  color:azure;
+}
+
+.selectCard input{
+  margin:0;
+    padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+
+.selectCard{
+  margin-top:9px;
+}
+.selectCard .chooseCardBrand{
+  display:flex;
+  flex-direction: row;
+}
+
+
+
+.brand__VISA{
+  background-image: url(https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/363_Visa_Credit_Card_logo-512.png);
+}
+
+.brand__Citibank{
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Citibank.svg/2560px-Citibank.svg.png);
+}
+
+.brand__MasterCard{
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png);
+}
+
+.brand__label{
+  cursor:pointer;
+  background-size:contain;
+ 
+  background-repeat:no-repeat;
+  display:inline-block;
+  width:100px;
+  height:50px;
+  margin:1rem;
+  -webkit-transition: all 100ms ease-in;
+     -moz-transition: all 100ms ease-in;
+          transition: all 100ms ease-in;
+  -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+     -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+          filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.brand__label:hover{
+  -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+  -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+.brand__label:active{
+  -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+  -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+.brand__label:visited{
+  -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+  -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+
+.backButt {
+  background-color: transparent;
+  border-radius: 19px;
+  border-color: midnightblue;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-transform: uppercase;
+  padding: 1rem;
+  color: midnightblue;
+  font-weight:bold;
+  margin-top:2rem;
+}
+.backButt:hover{
+  background-color: midnightblue;
+  color:azure;
+}
+
+.watchAllCards{
+  padding:1rem;
+  border-radius: 19px;
+  background-color: midnightblue;
+  color:azure;
+  margin-top:4em;
+
+}
+
+.watchAllCards__container {
+  display:flex;
+  flex-direction: row;
+  padding-bottom:3em;
+}
+
+.inactiveCards div{
+  display:flex;
+ 
+  flex-direction: column-reverse;
+ 
+}
+
+.inactiveCards div button{
+  max-width: 100px;
+  margin:4px;
+  
+}
+
+
+
+
+@media only screen and (max-width: 600px){
+  .selectCard .chooseCardBrand{
+    display:flex;
+    flex-direction: column;
+  }
+}
+
+
+@media only screen and (max-width: 1200px){
+  .watchAllCards__container {
+    display:flex;
+    flex-direction: column-reverse;
+  }
+  
+  
+}
