@@ -64,7 +64,7 @@ export const cardSlice = createSlice({
         alert("Du får max ha fyra kort. Prova att ta bort ett inaktivt kort först innan du lägger till ett nytt.")
         return;
       } else {
-        state.allCards = [...state.cards, payload];
+        state.allCards = [...state.allCards, payload];
         alert("Added card!")
         console.log("Message from reducer addNewCard: added card");
         return;
