@@ -339,7 +339,7 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, bank_logo,
         </form>
       </div>
     </div>
-{/* 
+
     {seeAll  &&
     
     <div className={`${styles.watchAllCards} ${styles.showAllCards} `}>
@@ -371,7 +371,7 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, bank_logo,
     </div>
     </div>
     </div>
-     } */}
+     }
     </section>
     
 

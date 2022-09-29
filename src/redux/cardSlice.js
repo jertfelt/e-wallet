@@ -65,7 +65,7 @@ export const cardSlice = createSlice({
         return;
       } else {
         state.allCards = [...state.allCards, payload];
-        alert("Added card!")
+        alert("Lagt till kort")
         console.log("Message from reducer addNewCard: added card");
         return;
       }
