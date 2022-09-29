@@ -202,13 +202,39 @@ form button:hover{
   
 }
 
-
-
+.errorLoading{
+  height:90vh;
+  display:flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+}
+.errorLoading h2{
+  font-size:40px;
+  flex-wrap: wrap;
+}
+.errorLoading img{
+  border-radius: 19px;
+}
+.errorLoading h3{
+  font-size:30px;
+}
+.errorLoading div {
+  margin-top:3em;
+  padding:2rem;
+}
 
 @media only screen and (max-width: 600px){
   .selectCard .chooseCardBrand{
     display:flex;
     flex-direction: column;
+  }
+  .errorLoading img{
+    height:50vh;
+    border-radius: 50%;
+  }
+  .errorLoading div{
+    margin-top:1rem;
   }
 }
 

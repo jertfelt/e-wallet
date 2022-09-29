@@ -3,52 +3,62 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import AddCardsForm from "../components/AddCardsForm";
-
+import ErrormessageAddCards from "../components/ErrormessageAddCards";
 
 const AddCards =() =>{
 const location = useLocation();
+const [loading, setLoading] = useState(true)
+const [showContent, setShowContent] = useState(false);
 
-const { allCards, activeC, user } = useSelector((state)=> state.cards);
+const { allCards, activeC} = useSelector((state)=> state.cards);
 
 const [userNames, setUserNames] = useState(null)
+//useSelector anropas här:
 const [inactiveCards, setAllCards] = useState(allCards);
 const [activeCard, setActive] = useState(activeC);
 
+//om inget finns alls (dvs man manuellt skrivit in skapakort)
+const [importFail, setImportFail] = useState(false)
 
-  //Skulle behöva anropa store här om användaren går direkt in på adressen. Har iallafall försökt lösa problemet med att useSelector inte fungerar när man refreshar hemsidan genom att lagra information från App->Homepage till AddCards genom localStorage. Problemet kvarstår dock om man går in på /skapakort för allra första gången typ. Vet ej heller om detta fungerar 100% felfritt.
-  //har kollat på useParams men ser det inte fungera i det här fallet
 
+  //Skulle behöva anropa store här om användaren går direkt in på adressen, försökt att få in ett felmeddelande nu istället. Har iallafall försökt lösa problemet med att useSelector inte fungerar när man refreshar hemsidan genom att lagra information från App->Homepage till AddCards genom localStorage. Vet ej heller om detta fungerar 100% felfritt.
 
 
   const loadState = () => {
       let username = JSON.stringify(localStorage.getItem('userLocal'));
-     
       let activeC = JSON.parse(localStorage.getItem("activeC"));
       let allCards = JSON.parse(localStorage.getItem("allCards"))
-
-      if (username === null){
-        return undefined;
+        console.log(username)
+      if (username === "null"){
+        console.log("hittade inget i localStorage")
+        setImportFail(true);
       }
       else {
-        // console.log("username is: ", username)
         setUserNames(username);
         setAllCards(allCards);
         setActive(activeC);
-        console.log("and the imported arrays are:",allCards, activeC)
+        // console.log("and the imported arrays are:",allCards, activeC)
       }
 
   }
+  useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+      setLoading(false);
+      setShowContent(true);
+    }, 3000);
+    }
+  }, [loading]);
   
   useEffect(() => {
-    console.log("active:", activeCard);
-    console.log("inactive", inactiveCards)
-
+    // console.log("active:", activeCard);
+    // console.log("inactive", inactiveCards)
     if (!activeCard){
-      console.log("inaktivt, aktiverar loadState")
+      console.log("refreshat? aktiverar loadState och kollar")
       loadState();
     }
     else {
-      //om det finns ett aktivt kort vill jag mest hämta user
+      //om det finns ett aktivt kort vill jag mest hämta user från localStorage
       const thisPerson = location.state?.name;
       const firstName= thisPerson.first;
       const lastName= thisPerson.last;
@@ -68,25 +78,31 @@ let currentYear = currentTime.getFullYear()
 let expireYear = currentYear + 5;
 let card_type = "DEBIT";
 
+//bakåtnavigering
 const navigate = useNavigate();
 const backButt = () => {
   navigate(-1)
 }
 
-
-
   return (
     <div className={styles.container}>
+      {loading && <div>Loading...</div>}
+      {showContent && <>
+      {importFail ?  <ErrormessageAddCards
+      />
+      :
+      <>
       <AddCardsForm 
         cardholder_name = {userNames}
         expMonth ={nameOfMonth} 
         expYear = {expireYear}
         card_type = {card_type}
         activeCard = {activeCard}
-        inactiveCards = {inactiveCards}
-      />
+        inactiveCards = {inactiveCards}></AddCardsForm>
       <button className={styles.backButt}
-       onClick={() => backButt()}>Gå tillbaka</button>
+      onClick={() => backButt()}>Gå tillbaka </button>
+      </>} 
+      </>}
     </div>
   )
 }
