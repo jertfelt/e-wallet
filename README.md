@@ -1,3 +1,10 @@
+![image](https://user-images.githubusercontent.com/30622818/193041736-0ff4106b-3ad9-45cc-8bbb-2346bdde8032.png)
+
+![image](https://user-images.githubusercontent.com/30622818/193041853-b6339dd9-ee81-4075-9c91-6b671e1b3fce.png)
+![image](https://user-images.githubusercontent.com/30622818/193041936-b16c9531-0cf4-4482-96c6-ec21e6075b50.png)
+![image](https://user-images.githubusercontent.com/30622818/193041997-33605e07-64b2-41e4-b538-abe8e535d27c.png)
+
+
 Tredje projektet, behövde installera om mjukvara och ominstallera webpacks.
 
 <h2>Instruktioner: Projektarbete - E-wallet</h2>
