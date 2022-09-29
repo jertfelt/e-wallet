@@ -111,6 +111,14 @@ form button:hover{
   flex-direction: row;
 }
 
+.whileLoading{
+  height:90vh;
+  display:flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: flex-start;
+ 
+}
 
 
 .brand__VISA{

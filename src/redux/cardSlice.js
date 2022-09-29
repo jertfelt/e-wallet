@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { first } from "lodash";
+
 
 import data from "../data/samplecards.json";
-const urlNames = "https://randomuser.me/api/"; 
+const urlNames = "https://randomuser.me/api"; 
 
 export const getUser = createAsyncThunk("cards/getUser", async () => {
   const res = await axios(urlNames);
@@ -20,11 +20,7 @@ export const saveState = (user, cards, active) => {
     const firstName = userLocal.first;
     const lastName = userLocal.last;
     const userNameLocal = firstName + " " + lastName;
-    localStorage.setItem("userLocal", userNameLocal);
-
-    console.log("array with cards", cards);
-    console.log("active card:", active)
-    
+    localStorage.setItem("userLocal", userNameLocal);  
     localStorage.setItem("allCards",JSON.stringify(cards));
     localStorage.setItem("activeC", JSON.stringify(active));
     localStorage.setItem("test", cards);
@@ -73,15 +69,21 @@ export const cardSlice = createSlice({
   extraReducers: {
     [getUser.fulfilled]: (state, {payload}) => {
       if (state.user === null){
+        state.loading =false;
         state.user = payload;
-        // console.log("payloyad:", payload)
-       
         const {cards} = JSON.parse(JSON.stringify(data));
         state.allCards = cards;
         state.activeC = state.allCards.shift();
         saveState(payload, state.allCards, state.activeC)
-        
       }
+    },
+    [getUser.pending]: (state, payload) => {
+      state.loading = true;
+      
+    }, 
+    [getUser.rejected]: (state, payload) => {
+      state.loading = false;
+      state.error = true;
     }
   }
 })

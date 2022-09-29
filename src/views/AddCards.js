@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import AddCardsForm from "../components/AddCardsForm";
 import ErrormessageAddCards from "../components/ErrormessageAddCards";
+import Loader from "../components/Loader";
 
 const AddCards =() =>{
 const location = useLocation();
@@ -23,6 +24,7 @@ const [importFail, setImportFail] = useState(false)
 
   //Skulle behöva anropa store här om användaren går direkt in på adressen, försökt att få in ett felmeddelande nu istället. Har iallafall försökt lösa problemet med att useSelector inte fungerar när man refreshar hemsidan genom att lagra information från App->Homepage till AddCards genom localStorage. Vet ej heller om detta fungerar 100% felfritt.
 
+  //!Viktigt: testa om det fungerar att lägga till kort efter att man refreshat!
 
   const loadState = () => {
       let username = JSON.stringify(localStorage.getItem('userLocal'));
@@ -51,8 +53,7 @@ const [importFail, setImportFail] = useState(false)
   }, [loading]);
   
   useEffect(() => {
-    // console.log("active:", activeCard);
-    // console.log("inactive", inactiveCards)
+ 
     if (!activeCard){
       console.log("refreshat? aktiverar loadState och kollar")
       loadState();
@@ -85,13 +86,17 @@ const backButt = () => {
 }
 
   return (
-    <div className={styles.container}>
-      {loading && <div>Loading...</div>}
+    <section className={styles.container}>
+      {loading && 
+      <div className={styles.whileLoading}><Loader/>
+      <h2 className="fancyfont">Laddar...</h2>
+      </div>}
       {showContent && <>
       {importFail ?  <ErrormessageAddCards
       />
       :
       <>
+      <div className="test">
       <AddCardsForm 
         cardholder_name = {userNames}
         expMonth ={nameOfMonth} 
@@ -101,9 +106,11 @@ const backButt = () => {
         inactiveCards = {inactiveCards}></AddCardsForm>
       <button className={styles.backButt}
       onClick={() => backButt()}>Gå tillbaka </button>
-      </>} 
+      </div>
+      </>
+      } 
       </>}
-    </div>
+    </section>
   )
 }
 

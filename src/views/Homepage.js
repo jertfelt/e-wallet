@@ -2,6 +2,7 @@ import styles from "./styles/Homepage.module.css";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Cards from "../components/Cards.jsx";
+import buttonstyles from "../components/styles/buttons.module.css"
 
 const Homepage = ({title}) => {
   
@@ -9,15 +10,16 @@ const Homepage = ({title}) => {
   );
   const username = user.name.first + " " + user.name.last;
   
-
-  
   return (
-    <div className={styles.homepagecont}>
+    <section className={styles.homepagecont}>
     <span>
-      <h2> Välkommen, {user.name.title} {user.name.first} {user.name.last}</h2>
+      <h2> Välkommen, <br/>{user.name.title} {user.name.first} {user.name.last}</h2>
       <Link to="/skapakort"
       state= {user}
-      ><button>Lägg till kort</button></Link>
+      >
+      <button className={buttonstyles.navigate__addcard}>
+        Lägg till kort</button>
+      </Link>
     </span>
     <h2>{title}:</h2>
     <article className={styles.homepagecontainer}>
@@ -34,18 +36,17 @@ const Homepage = ({title}) => {
     ))}
     </div> 
     <div className={styles.active}>
-    {activeC && 
-    <div key={activeC.card_number}> 
-    <h3>Aktivt:</h3>
-    <Cards {...activeC} 
-    cardholder_name= {username}/></div>}
+      {activeC && 
+      <div key={activeC.card_number}> 
+        <h3>Aktivt:</h3>
+        <Cards {...activeC} 
+        cardholder_name= {username}/>
+      </div>}
     </div>
     </article>
-    </div>
+    </section>
   )
 }
 
 export default Homepage
 
-
-// cardHolderName={name} menuButtonOptions={{deleteOption:true, activeOption:true}}

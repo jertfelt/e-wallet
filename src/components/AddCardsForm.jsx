@@ -3,16 +3,19 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { addCard } from "../redux/cardSlice";
 import Cards from "../components/Cards";
-import {Link} from "react-router-dom"
 import styles from "../views/styles/AddCards.module.css";
-import { set } from "lodash";
 
-const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard, inactiveCards}) => {
+
+const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard, inactiveCards }) => {
 
   const dispatch = useDispatch();
-  const {allCards, activeC } = useSelector(state => state.cards);
+  // const {allCards, activeC } = useSelector(state => state.cards);
   
   // const {allCards} = inactiveCards;
+  let allCards = inactiveCards;
+  let activeC = activeCard;
+  // console.log(inactiveCards)
+  // console.log(activeCard)
  
   // const {activeC} = activeCard;
   // console.log(allCards, activeC);
@@ -25,7 +28,6 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
   //   }
   // }, [])
   
-  //!VIKTIGT: useSelector och allCards fungerar bara när jag har klickat mig hit från Homepage, inte när jag refreshar sidan. 
 
 
   const [newcardprops, setNewCardProps] = useState({});
@@ -33,9 +35,6 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
   const [seeAll, setSeeAll] =useState(false);
 
   const changeBank = (e) => {
-
-  console.log("name", e.target.name)
-  console.log("value", e.target.value)
   const changedName = e.target.name;
   const changedValue = e.target.value;
 
@@ -44,7 +43,6 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
 
     switch (e.target.value){
       case "Icabanken":
-       
         bankURL = "https://www.icabanken.se/static/media/icabanken.6501e0eb.svg"
         console.log("Icabanken", bankURL)
         setCard(changedName, changedValue);
@@ -82,9 +80,9 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
       
     let newValue = e.target.value;
     let checkedValue = checkForNumbers(newValue, e.target);
-    setErrorMessage("Behöver vara siffror i kortnumret, inte bokstäver!")
+    // setErrorMessage("Behöver vara siffror i kortnumret, inte bokstäver!")
 
-    //bugg - se över imorgon
+    //bugg
     // if( allCards.filter(item => item.card_number === checkedValue) || activeC.filter(item => item.card_number === checkedValue)){
     //   setErrorMessage("Det här kortnumret är redan taget!")
     // }
@@ -104,9 +102,10 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
     }
 
     const changeMonth= (e) => {
-      console.log(e.target.value)
+    
     const changedName = e.target.name;
     const changedValue = e.target.value;
+    if (e.target.value === ""){}
     setCard(changedName, changedValue);
     }
 
@@ -152,8 +151,6 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
     const changedValue = e.target.value;
     let checkedValue = checkForNumbers(changedValue, e.target);
   
-
-
     setCard(changedName, checkedValue);
   }
 
@@ -175,7 +172,9 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
     e.preventDefault();
  
     if (allCards.length >= 3){
-      console.log("Får ej lägga till fler än fyra kort!")
+   
+      alert("Tyvärr får du inte lägga till fler än fyra kort.Prova att ta bort ett kort först innan du lägger till ett nytt.")
+      setErrorMessage("Försöker lägga till kort...");
     }
 
     dispatch(addCard(newcardprops));
@@ -183,10 +182,6 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
     setSeeAll(true)
     
   }
-
-
-  
-
   return (
     <section>
     <h2 className="fancyfont">Lägg till ett nytt kort:</h2>
@@ -255,18 +250,7 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
           </span>
         </div>
         </div>
-        {/* <select
-        className={styles.choseCardBrand}
-        required
-        name="card_brand"
-        onChange={changeCardHandler}>
-
-          //*lägg in css och html för bildval:
-          <option value="VISA">VISA</option>
-          <option value="MasterCard">MasterCard</option>
-          <option value="Citibank">Citibank</option>
-        </select> */}
-
+        
         <label htmlFor="card_type">
           Korttyp:
         </label>
@@ -304,6 +288,7 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
           id="expMonth"
           onInput={changeMonth}
           >
+            <option value="">Välj:</option>
             <option value="JANUARY">JANUARY</option>
             <option value="FEBRUARY">FEBRUARY</option>
             <option value="MARCH">MARCH</option>

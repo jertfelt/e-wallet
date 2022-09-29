@@ -44,7 +44,10 @@ För att få Godkänt ska du:
 
 ● Det är en single file application (SPA) som använder react-router.
 
-● Det ska finnas ett aktivt betalkort vid start av applikationen. För att få Väl Godkänt ska du:
+● Det ska finnas ett aktivt betalkort vid start av applikationen.
+
+
+För att få Väl Godkänt ska du:
 
 ● Gör ett API call vid start av applikationen, där du hämtar en slumpvald användare från följande API: https://randomuser.me/api/.
 
