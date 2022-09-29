@@ -32,10 +32,19 @@
 }
 
 .validthru{
+  margin-top:1rem;
   display:flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   width:80%;
+  margin-bottom:1rem;
+  margin-left:10%;
 }
+.validthru h4{
+  font-size:13px;
+}
+
 
 
 .icon{
@@ -58,9 +67,9 @@ right:5%;
 }
 
 .banklogo{
-  margin-top:0.2rem;
+  float:right;
   width:50%;
-  position: right;
+  align-self:center;
 }
 
 .cardcontent h2{
@@ -126,10 +135,7 @@ right:5%;
     max-width:90%;
     
   }
-  .card span{
-    display: flex;
-    flex-direction: column;
-  }
+
   .icon{
     height:16%;
     top:2%;

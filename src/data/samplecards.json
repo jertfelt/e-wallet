@@ -10,7 +10,7 @@
       "cardholder_name": "", 
       "expMonth": "NOVEMBER",
       "expYear": 2023,
-      "cvc": 123
+      "ccv": 123
       
     },
     {
@@ -22,7 +22,7 @@
       "card_number": "4200 0000 0000 0000",
       "cardholder_name": "", 
       "expMonth": "MAY",
-      "cvc": 345,
+      "ccv": 345,
       "expYear": 2025
      
     },
@@ -34,7 +34,7 @@
       "brand_img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png",
       "card_number": "5555 5555 5555 4444",
       "cardholder_name": "", 
-      "cvc": 398,
+      "ccv": 398,
       "expMonth": "JUNE",
       "expYear": 2025
       
@@ -47,7 +47,7 @@
       "card_type": "DEBIT",
       "card_number": "5173 3750 0000 0006",
       "cardholder_name": "", 
-      "cvc": 109, 
+      "ccv": 109, 
       "expMonth": "MARCH",
       "expYear": 2024
       

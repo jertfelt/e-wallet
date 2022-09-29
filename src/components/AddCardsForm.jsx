@@ -1,19 +1,20 @@
 
 import {  useState } from "react";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addCard } from "../redux/cardSlice";
 import Cards from "../components/Cards";
 import styles from "../views/styles/AddCards.module.css";
+import buttonstyle from "./styles/buttons.module.css"
 
 
-
-const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard, inactiveCards }) => {
+const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, bank_logo,  card_number, activeCard, inactiveCards, cardButtons = {}
+ }) => {
 
   const dispatch = useDispatch();
-  // const {allCards, activeC } = useSelector(state => state.cards);
+   const {allCards, activeC } = useSelector(state => state.cards);
 
-  let allCards = inactiveCards;
-  let activeC = activeCard;
+  // let allCards = inactiveCards;
+  // let activeC = activeCard;
 
 
   const [newcardprops, setNewCardProps] = useState({});
@@ -60,7 +61,6 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
         setErrorMessage("Du måste välja en bank")
   }
 }
-
   const changeCardNumber = (e) => {
     const changedName = e.target.name;
       
@@ -86,7 +86,6 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
     // }
 
     }
-
   const changeMonth= (e) => {
     
     const changedName = e.target.name;
@@ -94,7 +93,6 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
     if (e.target.value === ""){}
     setCard(changedName, changedValue);
     }
-
   const changeCardHandler = (e) => {
    
     const changedName = e.target.name;
@@ -122,7 +120,6 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
           setErrorMessage("Välj kortleverantör")
     }
   }
-
   const changeCardType = (e) => {
     if (e.target.value === ""){
       setErrorMessage("Du måste välja vilket typ av kort du ska ha!")
@@ -131,25 +128,19 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
     const changedValue = e.target.value;
     setCard(changedName, changedValue);
   }
-
   const changeYear = (e) => {
     const changedName = e.target.name;
     const changedValue = e.target.value;
     let checkedValue = checkForNumbers(changedValue, e.target);
   
-    setCard(changedName, checkedValue);
+    setCard(changedName, changedValue);
   }
-
   const changeCardcvc = (e) => {
     const changedName = e.target.name;
     const changedValue = e.target.value;
     let checkedValue = checkForNumbers(changedValue, e.target);
-    setCard(changedName, checkedValue);
+    setCard(changedName, changedValue);
   }
-
- 
-
-  
   const checkForNumbers = (value, input) => {
     let check = /[a-öA-Ö]/g;
     if (check.test(value)){
@@ -157,11 +148,9 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
       input.value = value;
     }
   }
-
-
   const setCard = (name, value) => {
-    setNewCardProps(previousProps => {
-      return {...previousProps, [name]: value}
+    setNewCardProps(prev => {
+      return {...prev, [name]: value}
     })
   }
 
@@ -169,24 +158,19 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
     e.preventDefault();
  
     if (allCards.length >= 3){
-   
       alert("Tyvärr får du inte lägga till fler än fyra kort.Prova att ta bort ett kort först innan du lägger till ett nytt.")
       setErrorMessage("Försöker lägga till kort...");
     }
     else {
+      console.log(newcardprops)
       dispatch(addCard(newcardprops));
       setErrorMessage("Lagt till kort");
+      console.log(allCards)
     }
-
-    
     setSeeAll(true)
-    
   }
 
   const randomCode =  Math.floor(100 + Math.random() * 900);
-  console.log(cardholder_name)
-
-
 
 
   return (
@@ -196,6 +180,8 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
     <div className={styles.formDisplay}>
       <Cards  
       cardholder_name = {cardholder_name}
+      bank_logo = {bank_logo}
+      card_number= {card_number}
       expMonth ={expMonth} 
       expYear = {expYear}
       card_type = {card_type}
@@ -260,7 +246,8 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
             </span>
           </div>
           </div>
-          <span className={styles.cardtypecardcvc}>
+          <div className={styles.cardtypecardcvc}>
+          <span>
           <label htmlFor="card_type">
             Korttyp:
           </label>
@@ -272,14 +259,17 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
             <option value="DEBIT">DEBIT</option>
             <option value="CREDIT">CREDIT</option>
           </select>
-          <label htmlFor="card_type">
+          </span>
+          <span>
+          <label htmlFor="ccv">
           CVC:
           </label>
+          
           <input 
           required
           type="text"
-          name="cvc"
-          id="cvc"
+          name="ccv"
+          id="ccv"
           maxLength="3"
           minLength ="3"
           onInput={changeCardcvc}
@@ -288,22 +278,7 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
           >
           </input>
           </span>
-          <label htmlFor="card_number">Skriv in kortnummer: *</label>
-          <input 
-          required
-          type="text"
-          name="card_number"
-          id="card_number"
-          maxLength="16"
-          minLength ="16"
-          onInput={changeCardNumber}
-          placeholder="XXXX XXXX XXXX XXXX"
-          data-max="16"
-          >
-          </input>
-        
-          <p>*Måste vara 16 siffror, inga bokstäver.</p>
-
+          </div>
           <label htmlFor="expYear">Ändra år & månad:</label>
           <span className={styles.yearandmonth}>
             <select
@@ -327,7 +302,6 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
               <option value="NOVEMBER">NOVEMBER</option>
               <option value="DECEMBER">DECEMBER</option>
             </select>
-    
           <input 
           required
           className="inputYear"
@@ -340,15 +314,32 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
           placeholder={expYear}>
           </input>
           </span>
+          <label htmlFor="card_number">Skriv in kortnummer: *</label>
+          <input 
+          required
+          type="text"
+          name="card_number"
+          id="card_number"
+          maxLength="16"
+          minLength ="16"
+          onInput={changeCardNumber}
+          placeholder="XXXX XXXX XXXX XXXX"
+          data-max="16"
+          >
+          </input>
+        
+          <p>*Måste vara 16 siffror, inga bokstäver.</p>
+
+         
           <div className={styles.errorMsgCont}>
           <p className={styles.errormessage}>
             {errormessage}</p>
           </div>
-          <button>SPARA</button>
+          <button className={buttonstyle.navigation__button}>SPARA</button>
         </form>
       </div>
     </div>
-
+{/* 
     {seeAll  &&
     
     <div className={`${styles.watchAllCards} ${styles.showAllCards} `}>
@@ -380,7 +371,7 @@ const AddCardsForm = ({cardholder_name, expMonth, expYear, card_type, activeCard
     </div>
     </div>
     </div>
-     }
+     } */}
     </section>
     
 

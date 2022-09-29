@@ -15,8 +15,6 @@ const Card = ({
 
   const [buttons] = useState(cardButtons);
  
- 
-  
   const dispatch = useDispatch();
 
   const setActive = () => {
@@ -55,16 +53,17 @@ const Card = ({
       className={styles.icon}
       src={brand_img} 
       alt={card_brand}/>
-       <img 
+      
+      <span className={styles.validthru}>
+        
+      <p>VALID THRU:</p> 
+      <h4>{expMonth} /</h4>
+      <h4>{expYear}</h4>
+    </span>
+    <img 
       className={styles.banklogo}
       src={bank_logo} 
       alt={bank_name}/>
-      <span className={styles.validthru}>
-      <p>VALID THRU:</p> 
-      <h4>{expMonth}</h4>
-      <h4> {expYear}</h4>
-    </span>
-    
     </article>
     
     

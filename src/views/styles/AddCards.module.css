@@ -8,6 +8,14 @@
   color:azure;
   min-height:90vh;
 }
+.whileLoading{
+  min-height:90vh;
+  display:flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
 
 .addCardsForm h2{
   font-size:30px;
@@ -75,6 +83,25 @@ form p {
   margin-top:0;
 }
 
+.cardtypecardcvc{
+  display:flex;
+  flex-direction: row;
+  width:200px;
+}
+.cardtypecardcvc span{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-right:10px;
+}
+.cardtypecardcvc select{
+  width:100px;
+}
+.cardtypecardcvc input{
+  width:30px;
+}
+
 .yearandmonth{
   display:flex;
   flex-direction: row;
@@ -84,8 +111,8 @@ form p {
 }
 
 .yearandmonth input{
-max-width:50px;
-border-radius: 9px;
+max-width:30px;
+margin-left: 10px;
 }
 
 .errormessage{
@@ -115,16 +142,8 @@ form button {
 .selectCard .chooseCardBrand{
   display:flex;
   flex-direction: row;
+  align-items: center;
 }
-
-.whileLoading{
-  min-height:90vh;
-  display:flex;
-  flex-direction: column;
-  margin: 0 auto;
-  align-items: flex-start;
-}
-
 
 .brand__VISA{
   background-image: url(https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/363_Visa_Credit_Card_logo-512.png);
@@ -141,11 +160,10 @@ form button {
 .brand__label{
   cursor:pointer;
   background-size:contain;
- 
   background-repeat:no-repeat;
   display:inline-block;
-  width:100px;
-  height:50px;
+  width:80px;
+  height:40px;
   margin:1rem;
   -webkit-transition: all 100ms ease-in;
      -moz-transition: all 100ms ease-in;
@@ -176,6 +194,8 @@ form button {
   font-weight:bold;
   margin-top:2rem;
 }
+
+
 
 .watchAllCards{
   padding:1rem;

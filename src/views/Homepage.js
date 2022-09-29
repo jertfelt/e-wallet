@@ -29,9 +29,9 @@ const Homepage = ({title}) => {
       <div className={styles.inactiveCards}
       key= {card.card_number}>
         <Cards {...card}
-         cardholder_name= {username}
-         cardButtons={{buttons:true}}
-         />
+        cardholder_name= {username}
+        cardButtons={{buttons:true}}
+        />
       </div>
     ))}
     </div> 

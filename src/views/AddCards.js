@@ -80,6 +80,7 @@ let currentTime = new Date();
 let currentYear = currentTime.getFullYear()
 let expireYear = currentYear + 5;
 let card_type = "DEBIT";
+const sample = "XXXX XXXX XXXX XXXX"
 
 //bakåtnavigering
 const navigate = useNavigate();
@@ -102,9 +103,11 @@ const backButt = () => {
   
       <AddCardsForm 
         cardholder_name = {userNames}
-        expMonth ={nameOfMonth} 
+        expMonth = {nameOfMonth} 
         expYear = {expireYear}
         card_type = {card_type}
+        card_number = {sample}
+        cardButtons={{buttons:true}}
         activeCard = {activeCard}
         inactiveCards = {inactiveCards}/>
      
