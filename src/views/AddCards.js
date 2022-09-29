@@ -1,6 +1,7 @@
 import styles from "./styles/AddCards.module.css"
-import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import buttonstyles from "../components/styles/buttons.module.css";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useSelector} from "react-redux";
 import { useEffect, useState } from "react";
 import AddCardsForm from "../components/AddCardsForm";
 import ErrormessageAddCards from "../components/ErrormessageAddCards";
@@ -18,14 +19,15 @@ const [userNames, setUserNames] = useState(null)
 const [inactiveCards, setAllCards] = useState(allCards);
 const [activeCard, setActive] = useState(activeC);
 
+  //?Skulle behöva anropa store här om användaren går direkt in på adressen, försökt att få in ett felmeddelande nu istället, alltså att om inget finns i localStorage eller inget finns i location.state så är det errormessage som syns.
+  
 //om inget finns alls (dvs man manuellt skrivit in skapakort)
 const [importFail, setImportFail] = useState(false)
 
 
-  //Skulle behöva anropa store här om användaren går direkt in på adressen, försökt att få in ett felmeddelande nu istället. Har iallafall försökt lösa problemet med att useSelector inte fungerar när man refreshar hemsidan genom att lagra information från App->Homepage till AddCards genom localStorage. Vet ej heller om detta fungerar 100% felfritt.
+//? Har iallafall försökt lösa problemet med att useSelector inte fungerar när man refreshar hemsidan genom att lagra information från App->Homepage till AddCards genom localStorage. Vet ej heller om detta fungerar 100% felfritt.
 
-  //!Viktigt: testa om det fungerar att lägga till kort efter att man refreshat!
-
+ 
   const loadState = () => {
       let username = JSON.stringify(localStorage.getItem('userLocal'));
       let activeC = JSON.parse(localStorage.getItem("activeC"));
@@ -36,10 +38,10 @@ const [importFail, setImportFail] = useState(false)
         setImportFail(true);
       }
       else {
+        //*localstoragetajm
         setUserNames(username);
         setAllCards(allCards);
         setActive(activeC);
-        // console.log("and the imported arrays are:",allCards, activeC)
       }
 
   }
@@ -86,7 +88,8 @@ const backButt = () => {
 }
 
   return (
-    <section className={styles.container}>
+    <section className={`${styles.addCardscontainer}`}>
+
       {loading && 
       <div className={styles.whileLoading}><Loader/>
       <h2 className="fancyfont">Laddar...</h2>
@@ -96,17 +99,17 @@ const backButt = () => {
       />
       :
       <>
-      <div className="test">
+  
       <AddCardsForm 
         cardholder_name = {userNames}
         expMonth ={nameOfMonth} 
         expYear = {expireYear}
         card_type = {card_type}
         activeCard = {activeCard}
-        inactiveCards = {inactiveCards}></AddCardsForm>
-      <button className={styles.backButt}
+        inactiveCards = {inactiveCards}/>
+     
+      <button className={ `${styles.backButt} ${buttonstyles.navigation__invert}`}
       onClick={() => backButt()}>Gå tillbaka </button>
-      </div>
       </>
       } 
       </>}

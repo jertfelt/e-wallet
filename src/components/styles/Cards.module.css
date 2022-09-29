@@ -32,21 +32,10 @@
 }
 
 .validthru{
-  margin-top:3px;
+  display:flex;
+  flex-direction: row;
   width:80%;
-
 }
-.validthru p{
-  position: relative;
-  top:1em;
-  left:3rem;
-  width:100%;
-  flex-wrap: wrap;
-}
-.validthru h4{  
-  line-height: 1rem;
-  margin-right:3px;
-  }
 
 
 .icon{
@@ -71,7 +60,7 @@ right:5%;
 .banklogo{
   margin-top:0.2rem;
   width:50%;
-  align-self: center;
+  position: right;
 }
 
 .cardcontent h2{

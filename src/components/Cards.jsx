@@ -1,7 +1,7 @@
 
 import styles from "./styles/Cards.module.css";
 import buttonstyles from "./styles/buttons.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { changeCard, deleteCard } from "../redux/cardSlice";
 import chip from "../assets/img/chip.png"
@@ -50,12 +50,7 @@ const Card = ({
     <h4>{card_number}</h4>
     <h4>{cardholder_name}</h4> 
     </div>
-    <span className={styles.validthru}>
-      <p>VALID THRU:</p> 
-      <h4>{expMonth}</h4>
-      <h4> {expYear}</h4>
-    </span>
-    
+   
     <img 
       className={styles.icon}
       src={brand_img} 
@@ -64,7 +59,14 @@ const Card = ({
       className={styles.banklogo}
       src={bank_logo} 
       alt={bank_name}/>
+      <span className={styles.validthru}>
+      <p>VALID THRU:</p> 
+      <h4>{expMonth}</h4>
+      <h4> {expYear}</h4>
+    </span>
+    
     </article>
+    
     
     <div className={styles.cardMenu}>
       {buttons.buttons && <>
