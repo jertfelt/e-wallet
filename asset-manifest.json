@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/jertfelt/e-wallet/static/css/main.10738042.css",
+    "main.js": "/jertfelt/e-wallet/static/js/main.ce5afdb6.js",
+    "static/media/Euro Technic Extended Outline Bold.ttf": "/jertfelt/e-wallet/static/media/Euro Technic Extended Outline Bold.bca454bb1eeda0643030.ttf",
+    "index.html": "/jertfelt/e-wallet/index.html",
+    "main.10738042.css.map": "/jertfelt/e-wallet/static/css/main.10738042.css.map",
+    "main.ce5afdb6.js.map": "/jertfelt/e-wallet/static/js/main.ce5afdb6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.10738042.css",
+    "static/js/main.ce5afdb6.js"
+  ]
+}
